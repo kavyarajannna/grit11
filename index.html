@@ -6,7 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="icon"  type="image/png" href="header.jpg"> <!-- Favicon -->
-    
+    <!-- GSAP and ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(".testimonial-card", {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: 0.2, // Stagger effect
+    scrollTrigger: {
+      trigger: ".testimonials",
+      start: "top 80%", // Trigger animation when 80% of section is in view
+      toggleActions: "play none none none"
+    }
+  });
+</script>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -1418,6 +1437,15 @@
             opacity: 1 !important;
             transform: translateY(0) !important;
         }
+        .mobile-only {
+    display: none; /* Hide by default */
+  }
+
+  @media screen and (max-width: 768px) {
+    .mobile-only {
+      display: block; /* Show only on mobile */
+    }
+  }
     </style>
 </head>
 
@@ -1430,7 +1458,7 @@
         <nav id="nav-menu">
             <div class="close-menu" onclick="toggleMenu()">×</div>
             <a href="index.html" class="desktop-home"><i class="fas fa-home"></i></a>
-            <a href="index.html">Home</a>
+            <a href="index.html" class="mobile-only">Home</a>
             <a href="Product.html">Products</a>
             <a href="Solutions.html">Solutions</a>
             <a href="CaseStudy.html">Case Studies</a>
@@ -1860,6 +1888,21 @@
             <a href="privacypolicy.html">Privacy Policy </a>
         </div>
     </div>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+      
+        gsap.from(".testimonial-card", {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          stagger: 0.2, // Stagger effect
+          scrollTrigger: {
+            trigger: ".testimonials",
+            start: "top 80%", // Trigger animation when 80% of section is in view
+            toggleActions: "play none none none"
+          }
+        });
+      </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const elements = document.querySelectorAll(
